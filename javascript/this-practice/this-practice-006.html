@@ -1,0 +1,16 @@
+<script>
+// 콜백함수의 경우에도 this는 전역객체에 바인딩된다.
+var value = 1;
+
+var obj = {
+  value: 100,
+  foo: function() {
+    setTimeout(function() {
+      console.log("callback's this: ",  this);  // window
+      console.log("callback's this.value: ",  this.value); // 1
+    }, 100);
+  }
+};
+
+obj.foo();
+</script>

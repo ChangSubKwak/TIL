@@ -1,0 +1,21 @@
+<script>
+var value = 1;
+
+var obj = {
+  value: 100,
+  foo: function() {
+    console.log("foo's this: ",  this);  // obj
+    console.log("foo's this.value: ",  this.value); // 100
+    function bar(a, b) {
+      console.log("bar's this: ",  this); // obj
+      console.log("bar's this.value: ", this.value); // 100
+      console.log("bar's arguments: ", arguments);
+    }
+    bar.apply(obj, [1, 2]);
+    bar.call(obj, 1, 2);
+    bar.bind(obj)(1, 2);
+  }
+};
+
+obj.foo();
+</script>
