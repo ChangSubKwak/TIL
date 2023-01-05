@@ -1,0 +1,19 @@
+<div id="app"></div>
+<a href="#">Go to the top</a>
+<a href="#none">Do nothing</a>
+<a href="#jump">Go to Test020</a>
+<a href="https://www.naver.com">Go to NAVER</a>
+ <a href="https://www.naver.com" target="_blank">Go to NAVER[New Window]</a>
+<script>
+  $app = document.querySelector('#app');
+
+  for (let i = 1; i <= 100; i++) {
+    const template = `<h1>Test${i}</h1>`;
+    if (i === 20) {
+      $app.innerHTML += `<h1 id="jump">Test${i}</h1>`
+      continue;
+    }
+    
+    $app.innerHTML += template;
+  }
+</script>
