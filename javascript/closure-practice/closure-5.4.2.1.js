@@ -2,6 +2,7 @@
 // Quokka를 이용하여 테스트 해보기
 
 function HelloFunc(func) {
+  console.log(this);
   this.greeting = "hello";
 }
 
