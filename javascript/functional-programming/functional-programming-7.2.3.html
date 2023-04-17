@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+</head>
+<body>
+</body>
+<script>
+// Using functional programming, let us do simple implementation
+const reduce =  (func, arr, memo) => {
+  let accum = memo;
+
+  for (let i = 0; i < arr.length; i++) {
+    accum = func(accum, arr[i]);
+  }
+
+  return accum;
+}
+
+const arr = [1, 2, 3, 4];
+
+const sum = (x, y) => {
+  return x + y;
+}
+
+const multiply = (x, y) => {
+  return x * y;
+}
+
+console.log(reduce(sum, arr, 0));
+console.log(reduce(multiply, arr, 1));
+
+</script>
+</html>
