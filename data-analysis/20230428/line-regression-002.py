@@ -1,5 +1,4 @@
 import os
-import pandas as pd
 import numpy as np
 
 os.system("cls")
@@ -19,8 +18,8 @@ for i in range(len(sum)):
     if i == 0: cumulated_sale_sum.append(sum[i])
     else:      cumulated_sale_sum.append(cumulated_sale_sum[i - 1] + sum[i])
 
-# print(data_elapsed_day)
-# print(cumulated_sale_sum)
+print(data_elapsed_day)
+print(cumulated_sale_sum)
 
 data_elapsed_day   = np.array(data_elapsed_day).reshape(-1, 1)
 cumulated_sale_sum = np.array(cumulated_sale_sum).reshape(-1, 1)
@@ -52,7 +51,6 @@ y = linearRegression.coef_[0][0] * x + linearRegression.intercept_[0]
 plt.plot(x, y, color = 'red')
 plt.title('y = {}x + {}'.format(linearRegression.coef_[0][0], linearRegression.intercept_[0]))
 plt.show()
-
 
 # [0.90732105]
 # [13.84434629]
