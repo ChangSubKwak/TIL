@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+</head>
+<body>
+</body>
+<script>
+// Let us currying
+const calculate = (a, b, c) => a * b + c;
+
+function curryV1(func) {
+  var args = Array.prototype.slice.call(arguments, 1);
+  return function() {
+    return func.apply(null, args.concat(Array.prototype.slice.call(arguments)));
+  }
+}
+
+const new_func1 = curryV1(calculate, 1);
+console.log(new_func1(2, 3));
+
+const new_func2 = curryV1(calculate, 1, 3);
+console.log(new_func2(3));
+
+// 람다 함수에서 arguments 를 아래와 같이 써야함
+const curryV2 = (...arguments) => {
+  const args = Object.values(arguments).slice(1);
+  const func = arguments[0];
+  return (...innerArguments) => func.apply(null, args.concat(Object.values(innerArguments)));
+}
+
+const new_func3 = curryV2(calculate, 1);
+console.log(new_func3(2, 3));
+
+const new_func4 = curryV2(calculate, 1, 3);
+console.log(new_func4(3));
+
+</script>
+</html>
