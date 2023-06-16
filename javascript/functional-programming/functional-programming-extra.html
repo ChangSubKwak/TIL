@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+</head>
+<body>
+</body>
+<script>
+
+// const Person = (arg) => {   // impossible
+function Person(arg) {
+  if (this.name == undefined) {
+    this.name = arg ? arg : "changsub";
+  }
+  console.log("Name : " + this.name);
+}
+
+Person.prototype.setName = function(value) {
+  this.name = value;
+};
+
+Person.prototype.getName = function() {
+  return this.name;
+};
+
+console.log("------------> 1. No argument");
+Person();
+
+const myobj = { name : "seyoung" };
+const newFunc = Person.bind(myobj);
+console.log("------------> 2. After binding argument");
+newFunc();
+
+console.log("------------> 3.");
+const obj = new newFunc();
+console.log(obj.getName());
+
+</script>
+</html>

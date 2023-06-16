@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+</head>
+<body>
+</body>
+<script>
+
+function wrap(object, method, wrapper) {
+  let fn = object[method];
+  return object[method] = function() {
+    // return wrapper.apply(this, [ fn ].concat(          // original 함수와 function(orig_func, value)의 함수가 각각의 문맥을 가진 this를 가짐
+    return wrapper.apply(this, [ fn.bind(this) ].concat(  // 이렇게 하면, original 함수의 this도 function(orig_func, value)의 문맥의 this로 적용된다.
+      Array.prototype.slice.call(arguments)
+    ));
+  }
+}
+
+Function.prototype.original = function(value) {
+  this.value = value;
+  console.log("value : " + this.value);
+}
+
+const mywrap = wrap(Function.prototype, "original", function(orig_func, value) {
+  this.value = 20;
+  orig_func(value);
+  console.log("wrapper value : " + this.value);
+});
+
+const obj = new mywrap("changsub");
+
+</script>
+</html>

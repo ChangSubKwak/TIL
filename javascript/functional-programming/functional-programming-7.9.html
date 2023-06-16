@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+</head>
+<body>
+</body>
+<script>
+
+const print_all = function(arg) {
+  // console.log("arg - ", arg);
+  // console.log("arguments - ", arguments);
+  for (let i in this) {
+    console.log("this - ", i + " : " + this[i]);
+  }
+
+  for (let i in arguments) {
+    console.log("arguments - ", i + " : " + arguments[i]);
+  }
+}
+
+
+const myobj = { name : "zzoon" };
+const myfunc = print_all.bind(myobj);
+
+// print_all();
+// myfunc();
+
+const myfunc1 = print_all.bind(myobj, "I am changsub.", "others");
+myfunc1("Who are you?");
+
+// const print_all_lambda = (...arguments) => {
+//   for (let i in this) {
+//     console.log(i + " : " + this[i]);
+//   }
+
+//   for (let i in arguments) {
+//     console.log(i + " : " + arguments[i]);
+//   }
+// }
+
+// print_all();
+// print_all_lambda();
+
+
+
+
+
+
+</script>
+</html>

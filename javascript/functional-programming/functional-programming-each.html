@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+</head>
+<body>
+</body>
+<script>
+
+const each = (obj, fn, args) => {
+  if (obj.length == undefined) {      // if obj is object type
+    for (let i in obj) {
+      fn.apply(obj[i], args || [i, obj[i]]);
+    }
+  } else {
+    // console.log(`args`, args);
+    for (let i = 0; i < obj.length; i++) {
+      // console.log(`obj[${i}]`, obj[i]);
+      fn.apply(obj[i], args || [i, obj[i]]);
+    }
+  }
+
+  return obj;
+}
+
+each([1, 2, 3], (idx, num) => {
+  console.log(idx + " : " + num);
+});
+
+const whoAmI = {
+  name : "changsub",
+  age : 30,
+  sex : "male"
+}
+
+each(whoAmI, (idx, num) => {
+  console.log(idx + " : " + num);
+});
+
+</script>
+</html>

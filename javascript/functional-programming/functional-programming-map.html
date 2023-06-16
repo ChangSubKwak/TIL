@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+</head>
+<body>
+</body>
+<script>
+
+Array.prototype.map = function (callback) {
+  const obj = this;
+  let value, mappedValue;
+  let arrayObject = new Array(obj.length);
+
+  // console.log("callback", callback);
+  // console.log("obj", obj.length);
+
+  for (let i = 0; i < obj.length; i++) {
+    value = obj[i];
+    mappedValue = callback.call(null, value);
+    arrayObject[i] = mappedValue;
+  }
+
+  return arrayObject;
+};
+
+const testArray = [1, 2, 3];
+const result = testArray.map((value) => {
+  return value * value;
+});
+
+console.log(result);
+
+</script>
+</html>
