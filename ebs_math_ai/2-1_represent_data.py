@@ -3,7 +3,7 @@ data = [242, 256, 237, 223, 263, 81, 46]
 import matplotlib.pyplot as plt
 from matplotlib import font_manager, rc
 
-# 나눔고딩 코딩
+# D2 코딩
 fontName = font_manager.FontProperties(fname="C:/Users/parad/AppData/Local/Microsoft/Windows/Fonts/D2Coding-Ver1.3.2-20180524.ttf").get_name()
 rc('font', family=fontName)
 
